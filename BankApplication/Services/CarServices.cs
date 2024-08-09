@@ -1,4 +1,5 @@
 ﻿using BankApplication.Common;
+using CarMgmt.Core;
 using CarMgmt.Intereface;
 using CarMgmt.Models;
 using CarMgmt.Repository;
@@ -30,7 +31,7 @@ namespace CarMgmt.Services
                 {
                     IsSuccess = false,
                     Data = errorList,
-                    message = "Failed"
+                    message = CarConstant.CommonFailed
                 };
             }
 
@@ -51,8 +52,8 @@ namespace CarMgmt.Services
             return new ResponseModel()
             {
                 IsSuccess = false,
-                Data = "Car Created Successfully",
-                message = "Successs"
+                Data = CarConstant.CarAddSuccessfully,
+                message = CarConstant.CommonSuccess
             };
         }
 
@@ -66,7 +67,7 @@ namespace CarMgmt.Services
             {
                 IsSuccess = true,
                 Data = cardata,
-                message = "Success"
+                message = CarConstant.CommonSuccess
             };
         }
 
@@ -80,7 +81,7 @@ namespace CarMgmt.Services
             {
                 IsSuccess = true,
                 Data = cardata,
-                message = "Success"
+                message = CarConstant.CommonSuccess
             };
         }
 
@@ -93,7 +94,7 @@ namespace CarMgmt.Services
                 {
                     IsSuccess = false,
                     Data = errorList,
-                    message = "Failed"
+                    message = CarConstant.CommonFailed
                 };
             }
 
@@ -115,10 +116,29 @@ namespace CarMgmt.Services
             return new ResponseModel()
             {
                 IsSuccess = false,
-                Data = "Car Updated Successfully",
-                message = "Successs"
+                Data = CarConstant.CarUpdatedSuccessfully,
+                message = CarConstant.CommonSuccess
             };
         }
+
+        public ResponseModel UploadCarImages(long carId, List<IFormFile> files)
+        {
+            foreach (var item in files)
+            {
+                var parameters = new List<SqlParameter>();;
+                parameters.Add(new SqlParameter("@carid", carId));
+                parameters.Add(new SqlParameter("@Class", item.FileName));
+                _layer.ExecuteNonQuery("InsertCarImage", parameters);
+            }
+
+            return new ResponseModel()
+            {
+                IsSuccess = false,
+                Data = CarConstant.CarImageSaveSuccessfully,
+                message = CarConstant.CommonSuccess
+            };
+        }
+
 
         private List<string> Validate(CarRequestModel car)
         {

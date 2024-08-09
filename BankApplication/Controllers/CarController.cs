@@ -1,7 +1,6 @@
-﻿using CarMgmt.Controllers;
+﻿using BankApplication.Common;
 using CarMgmt.Intereface;
 using CarMgmt.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarMgmt.Controllers
@@ -37,6 +36,23 @@ namespace CarMgmt.Controllers
         public ActionResult GetAll()
         {
             return Ok(_car.ListCar());
+        }
+
+        [HttpPost]
+        public ActionResult UploadCarImage(long carId, List<IFormFile> files)
+        {
+            if (files.Any())
+            {
+                return Ok(_car.UploadCarImages(carId, files));
+            }
+
+            return Ok(new ResponseModel
+            {
+                IsSuccess = false,
+                Data = null,
+                message = "Please Select atleadt one Image to Upload"
+            });
+
         }
     }
 }

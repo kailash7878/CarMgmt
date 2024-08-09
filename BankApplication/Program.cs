@@ -16,7 +16,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "BankApplication");    
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "CarMgmtSystem");    
 });
 
 app.UseHttpsRedirection();

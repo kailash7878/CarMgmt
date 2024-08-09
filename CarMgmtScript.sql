@@ -122,3 +122,52 @@ SET NOCOUNT ON;
 	WHERE  Id = ISNULL(@Id, car.Id)
 	Order By Id DESC
 END
+
+Create Procedure SaveCarImage
+ @CarId bigint,
+ @ImageName varchar(max),
+AS
+BEGIN
+SET NOCOUNT ON;
+BEGIN TRY
+	INSERT INTO CatImage
+	(CarID, ImageName)
+	Values(@CarId, @ImageName)
+	SELECT "Car Image Save Successfully." as msg
+END TRY
+BEGIN CATCH
+	SELECT @@ERROR As Msg
+END CATCH
+
+
+Create Procedure UpdateCarImage
+ @ID bigint,
+ @CarId bigint,
+ @ImageName varchar(max),
+AS
+BEGIN
+SET NOCOUNT ON;
+BEGIN TRY
+	Update CatImage SET
+		ImageName = @ImageName
+	WHERE ID = @Id and CarId = @CarId
+	SELECT "Car Image Updated Successfully." as msg
+END TRY
+BEGIN CATCH
+	SELECT @@ERROR As Msg
+END CATCH
+
+
+Create Procedure DeleteCarImage
+ @ID bigint,
+ @CarId bigint
+AS
+BEGIN
+SET NOCOUNT ON;
+BEGIN TRY
+	Delete From CatImage WHERE ID = @Id and CarId = @CarId
+	SELECT "Car Image Deleted Successfully." as msg
+END TRY
+BEGIN CATCH
+	SELECT @@ERROR As Msg
+END CATCH

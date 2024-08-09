@@ -10,5 +10,6 @@ namespace CarMgmt.Intereface
         bool ActiveInActive(int id);
         ResponseModel ListCar();
         ResponseModel GetById (int id);
+        ResponseModel UploadCarImages(long carId, List<IFormFile> files);
     }
 }
