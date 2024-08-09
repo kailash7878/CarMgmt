@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace CarMgmt.Repository

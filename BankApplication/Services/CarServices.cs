@@ -3,9 +3,7 @@ using CarMgmt.Core;
 using CarMgmt.Intereface;
 using CarMgmt.Models;
 using CarMgmt.Repository;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Data.SqlClient;
-using System.Security.Claims;
+using System.Data.SqlClient;
 
 namespace CarMgmt.Services
 {

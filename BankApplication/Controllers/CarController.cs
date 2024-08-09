@@ -1,4 +1,5 @@
 ﻿using BankApplication.Common;
+using CarMgmt.Core;
 using CarMgmt.Intereface;
 using CarMgmt.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -50,9 +51,8 @@ namespace CarMgmt.Controllers
             {
                 IsSuccess = false,
                 Data = null,
-                message = "Please Select atleadt one Image to Upload"
+                message = CarConstant.PleaseSelectCarImage
             });
-
         }
     }
 }
