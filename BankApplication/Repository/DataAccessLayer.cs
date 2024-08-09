@@ -6,9 +6,14 @@ namespace CarMgmt.Repository
     public class DataAccessLayer
     {
         SqlConnection _conn;
+        IConfiguration _configuration;
+        public DataAccessLayer(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public void ExecuteNonQuery(string SpName, List<SqlParameter> parameters)
         {
-            using (_conn = new SqlConnection(""))
+            using (_conn = new SqlConnection(_configuration.GetConnectionString("connString")))
             {
                 try
                 {
