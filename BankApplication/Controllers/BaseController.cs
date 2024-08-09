@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BankApplication.Controllers
+namespace CarMgmt.Controllers
 {
     [Route(ApiRoutes.V1)]
     [ApiController]

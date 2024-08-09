@@ -4,7 +4,7 @@ using System.Data;
 
 namespace CarMgmt.Repository
 {
-    public class DataAccessLayer
+    public class DataAccessLayer : IDataAccessLayer
     {
         IConfiguration _configuration;
 
@@ -69,6 +69,8 @@ namespace CarMgmt.Repository
                             cmd.Parameters.Add(parameters);
                             cmd.ExecuteNonQuery();
                         }
+                        SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                        sda.Fill(dt);
                     }
                 }
                 catch (Exception)

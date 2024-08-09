@@ -13,7 +13,7 @@ namespace CarMgmt.Models
         [Required]
         public string ModelName { get; set; }
         [Required]
-        public string MdoelCode { get; set; }
+        public string ModelCode { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]

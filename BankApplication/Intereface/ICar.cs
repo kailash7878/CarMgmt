@@ -1,13 +1,14 @@
-﻿using CarMgmt.Models;
+﻿using BankApplication.Common;
+using CarMgmt.Models;
 
 namespace CarMgmt.Intereface
 {
     public interface ICar
     {
-        CarResponseModel Create();
-        CarResponseModel Update();
-        bool ActiveInActive();
-        List<CarResponseModel> ListCar();
-        CarResponseModel GetById (int id);
+        ResponseModel Create(CarRequestModel car);
+        ResponseModel Update(CarRequestModel car);
+        bool ActiveInActive(int id);
+        ResponseModel ListCar();
+        ResponseModel GetById (int id);
     }
 }

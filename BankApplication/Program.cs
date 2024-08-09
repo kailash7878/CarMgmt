@@ -1,27 +1,15 @@
-using BankApplication.Data;
-using BankApplication.Intereface;
-using BankApplication.Repository;
-using BankApplication.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using System.Reflection;
-using System.Text.Json.Serialization;
+using CarMgmt.Intereface;
+using CarMgmt.Repository;
+using CarMgmt.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<IBank, BankServices>();
-builder.Services.AddScoped<ICustomer, CustomerService>();
-builder.Services.AddScoped<ICar, AccountService>();
+builder.Services.AddScoped<IDataAccessLayer, DataAccessLayer>();
+builder.Services.AddScoped<ICar, CarServices>();
 
-builder.Services.AddDbContext<BankAppContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("connString"));
-    
-});
 
-builder.Services.AddControllers().AddJsonOptions(x=>x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+//builder.Services.AddControllers().AddJsonOptions(x=>x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
