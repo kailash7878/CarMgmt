@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BankApplication.Models
+namespace CarMgmt.Models
 {
     public class CarRequestModel
     {

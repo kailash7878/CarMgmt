@@ -1,29 +1,37 @@
-﻿using BankApplication.Common;
-using BankApplication.Data.models;
-using BankApplication.Data.Models;
-using BankApplication.Intereface;
-using BankApplication.Models;
+﻿using CarMgmt.Intereface;
+using CarMgmt.Models;
 
-namespace BankApplication.Services
+namespace CarMgmt.Services
 {
     public class AccountService : ICar
-    {
-        private readonly IGenericRepository<Account> _repository;
+    {        
+        public AccountService()
+        {
         
-        public AccountService(IGenericRepository<Account> repository, )
-        {
-            _repository = repository;
         }
-        public ResponseModel Create(CarRequestModel account)
+        public bool ActiveInActive()
         {
-            var errors = new List<string>();
-            
-            return new ResponseModel
-            {
-                IsSuccess = true,
-                Data = "Success",
-                message = "Success"
-            };
+            throw new NotImplementedException();
+        }
+
+        public CarResponseModel Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public CarResponseModel GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarResponseModel> ListCar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public CarResponseModel Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }
